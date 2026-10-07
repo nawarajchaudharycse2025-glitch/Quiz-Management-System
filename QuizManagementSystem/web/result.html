@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizMaster - Result</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span>Q</span> QuizMaster
+    </div>
+
+</nav>
+
+
+<div class="result-container">
+
+    <div class="result-card">
+
+        <div class="result-icon">
+            🏆
+        </div>
+
+
+        <h1>Quiz Completed!</h1>
+
+
+        <p>Your final score</p>
+
+
+        <div class="score" id="score">
+            0%
+        </div>
+
+
+        <p id="resultDetails">
+            You scored 0 out of 0
+        </p>
+
+
+        <p id="message"></p>
+
+
+        <div class="result-buttons">
+
+            <a href="dashboard.html"
+               class="primary-btn">
+                Back to Dashboard
+            </a>
+
+
+            <a href="leaderboard.html"
+               class="secondary-btn">
+                View Leaderboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const score =
+    Number(localStorage.getItem("lastScore") || 0);
+
+const correct =
+    Number(localStorage.getItem("quizScore") || 0);
+
+const total =
+    Number(localStorage.getItem("quizTotal") || 0);
+
+
+// Display percentage
+
+document.getElementById("score")
+    .textContent = score + "%";
+
+
+// Display correct answers
+
+document.getElementById("resultDetails")
+    .textContent =
+    "You scored " + correct + " out of " + total;
+
+
+// Display performance message
+
+const message =
+    document.getElementById("message");
+
+
+if (score >= 80) {
+
+    message.textContent =
+        "Excellent performance! 🔥";
+
+}
+else if (score >= 50) {
+
+    message.textContent =
+        "Good job! Keep practicing. 💪";
+
+}
+else {
+
+    message.textContent =
+        "Keep learning and try again! 📚";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

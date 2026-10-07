@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizMaster Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span>Q</span> QuizMaster
+    </div>
+
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+</nav>
+
+
+<section class="dashboard">
+
+    <h1>
+        Welcome, <span id="userName">User</span> 👋
+    </h1>
+
+    <p class="section-subtitle">
+        Choose a quiz and test your knowledge.
+    </p>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>🏆 Best Score</h3>
+            <strong id="bestScore">0%</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>📝 Quizzes</h3>
+            <strong id="quizCount">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>🎯 Accuracy</h3>
+            <strong id="accuracy">0%</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>🔥 Streak</h3>
+            <strong id="streak">0 Days</strong>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         QUIZ SELECTION
+    ========================== -->
+
+    <h2 class="dashboard-title">
+        Select Quiz
+    </h2>
+
+
+    <div class="quiz-grid">
+
+        <!-- PROGRAMMING -->
+
+        <div class="quiz-card">
+
+            <div class="category-icon">💻</div>
+
+            <h2>Programming</h2>
+
+            <p>
+                Java, C, Python, JavaScript
+            </p>
+
+            <button
+                onclick="startQuiz('programming')"
+                class="primary-btn">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+        <!-- SCIENCE -->
+
+        <div class="quiz-card">
+
+            <div class="category-icon">🧪</div>
+
+            <h2>Science</h2>
+
+            <p>
+                Physics, Chemistry, Biology
+            </p>
+
+            <button
+                onclick="startQuiz('science')"
+                class="primary-btn">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+        <!-- GENERAL KNOWLEDGE -->
+
+        <div class="quiz-card">
+
+            <div class="category-icon">🌍</div>
+
+            <h2>General Knowledge</h2>
+
+            <p>
+                World, History and Current Affairs
+            </p>
+
+            <button
+                onclick="startQuiz('gk')"
+                class="primary-btn">
+                Start Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+// =========================
+// CHECK LOGIN
+// =========================
+
+const loggedIn = localStorage.getItem("loggedIn");
+
+if (loggedIn !== "true") {
+
+    alert("Please login first.");
+
+    window.location.href = "login.html";
+}
+
+
+// =========================
+// SHOW USER NAME
+// =========================
+
+const savedUser = localStorage.getItem("quizUser");
+
+if (savedUser) {
+
+    const user = JSON.parse(savedUser);
+
+    document.getElementById("userName").textContent = user.name;
+}
+
+
+// =========================
+// LOAD QUIZ STATISTICS
+// =========================
+
+const bestScore =
+    localStorage.getItem("bestScore") || 0;
+
+const quizCount =
+    localStorage.getItem("quizCount") || 0;
+
+const accuracy =
+    localStorage.getItem("accuracy") || 0;
+
+const streak =
+    localStorage.getItem("streak") || 0;
+
+
+document.getElementById("bestScore").textContent =
+    bestScore + "%";
+
+document.getElementById("quizCount").textContent =
+    quizCount;
+
+document.getElementById("accuracy").textContent =
+    accuracy + "%";
+
+document.getElementById("streak").textContent =
+    streak + " Days";
+
+
+// =========================
+// START QUIZ
+// =========================
+
+function startQuiz(category) {
+
+    localStorage.setItem(
+        "selectedCategory",
+        category
+    );
+
+    window.location.href = "quiz.html";
+}
+
+
+// =========================
+// LOGOUT
+// =========================
+
+function logout() {
+
+    localStorage.removeItem("loggedIn");
+
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

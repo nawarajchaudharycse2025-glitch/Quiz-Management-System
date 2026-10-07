@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>QuizMaster - Quiz</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span>Q</span> QuizMaster
+    </div>
+
+    <div>
+        ⏱️ <strong id="timer">60</strong> sec
+    </div>
+
+</nav>
+
+
+<div class="quiz-container">
+
+    <div class="quiz-header">
+
+        <span id="questionNumber">
+            Question 1 / 5
+        </span>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <h1 id="question">
+            Loading question...
+        </h1>
+
+        <div id="options"></div>
+
+        <button
+            id="nextButton"
+            class="primary-btn next-btn">
+            Next Question →
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="js/quiz.js"></script>
+
+</body>
+</html>

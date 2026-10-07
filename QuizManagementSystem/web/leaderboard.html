@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizMaster - Leaderboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span>Q</span> QuizMaster
+    </div>
+
+    <div class="nav-links">
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="leaderboard-container">
+
+    <h1>🏆 Global Leaderboard</h1>
+
+    <p class="section-subtitle">
+        Top QuizMaster performers
+    </p>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <!-- Current User -->
+
+            <tr>
+
+                <td>🥇 1</td>
+
+                <td id="playerName">
+                    Player
+                </td>
+
+                <td id="playerCategory">
+                    Programming
+                </td>
+
+                <td id="playerScore">
+                    0%
+                </td>
+
+            </tr>
+
+
+            <!-- Sample Players -->
+
+            <tr>
+
+                <td>🥈 2</td>
+
+                <td>Rajnandan Kumar Patel</td>
+
+                <td>Science</td>
+
+                <td>90%</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>🥉 3</td>
+
+                <td>Quiz Master</td>
+
+                <td>General Knowledge</td>
+
+                <td>85%</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script>
+
+// Get registered user
+
+const savedUser =
+    localStorage.getItem("quizUser");
+
+if (savedUser) {
+
+    const user =
+        JSON.parse(savedUser);
+
+    document.getElementById("playerName")
+        .textContent = user.name;
+}
+
+
+// Get best score
+
+const bestScore =
+    localStorage.getItem("bestScore") || 0;
+
+document.getElementById("playerScore")
+    .textContent = bestScore + "%";
+
+
+// Get selected category
+
+const category =
+    localStorage.getItem("selectedCategory")
+    || "programming";
+
+
+const categoryNames = {
+
+    programming: "Programming",
+
+    science: "Science",
+
+    gk: "General Knowledge"
+
+};
+
+
+document.getElementById("playerCategory")
+    .textContent =
+    categoryNames[category];
+
+</script>
+
+
+</body>
+
+</html>
